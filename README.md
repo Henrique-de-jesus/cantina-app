@@ -1,2 +1,0 @@
-# cantina-app
-Projeto cantina
