@@ -1,0 +1,54 @@
+import { useState } from "react";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from "react-native";
+
+export default function LoginScreen() {
+  const [user, setUser] = useState('')
+  const [senha, setSenha] = useState('')
+
+  return (
+    <View style={styles.container}>
+      <Image style={styles.image} source={require('../assets/chefe_de_cozinha.png')}></Image>
+      <Text style={styles.text}>Login</Text>
+      <TextInput placeholder="Usuário, email ou telefone:" onChangeText={(u) => setUser(u)} style={styles.login}></TextInput>
+      <TextInput placeholder="Senha:" secureTextEntry onChangeText={(s) => setSenha(s)} style={styles.login}></TextInput>
+      <TouchableOpacity onPress={() => alert(`Usuário: ${user}, senha: ${senha}`)}><Text style={styles.enter}>Entrar</Text></TouchableOpacity>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    height: 100,
+    width: 100,
+
+  },
+  text: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  login: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 5,
+    margin: 15,
+    padding: 10,
+  },
+  enter: {
+    height: 40,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 5,
+    margin: 15,
+    padding: 10,
+    backgroundColor: 'gray'
+  }
+});
