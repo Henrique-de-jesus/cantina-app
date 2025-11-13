@@ -1,17 +1,28 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 export default function LoginScreen() {
+  const navigation = useNavigation();
   const [user, setUser] = useState('')
   const [senha, setSenha] = useState('')
 
+  function handlelogin(){
+    //1. validar usuário e senha
+    //2. redirecionar a tela principal
+    if(user === 'teste@teste.com' && senha === '123'){
+      navigation.navigate('Home');
+    } else{
+      alert('Usuário inválido!')
+    }
+  }
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require('../assets/chefe_de_cozinha.png')}></Image>
-      <Text style={styles.text}>Login</Text>
+       <Text style={styles.text}>Login</Text>
       <TextInput placeholder="Usuário, email ou telefone:" onChangeText={(u) => setUser(u)} style={styles.login}></TextInput>
       <TextInput placeholder="Senha:" secureTextEntry onChangeText={(s) => setSenha(s)} style={styles.login}></TextInput>
-      <TouchableOpacity onPress={() => alert(`Usuário: ${user}, senha: ${senha}`)}><Text style={styles.enter}>Entrar</Text></TouchableOpacity>
+       <TouchableOpacity onPress={handlelogin}><Text style={styles.enter}>Entrar</Text></TouchableOpacity>
     </View>
   );
 }
@@ -49,6 +60,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 15,
     padding: 10,
-    backgroundColor: 'gray'
+    backgroundColor: '#ff5768'
   }
 });
