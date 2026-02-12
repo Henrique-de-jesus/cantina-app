@@ -12,8 +12,8 @@ export default function LoginScreen() {
   function handlelogin(){
     //1. validar usuário e senha
     //2. redirecionar a tela principal
-    if(user === 'teste@teste.com' && senha === '123'){
-      navigation.navigate('Home');
+    if(user === 'teste@teste.com' && senha === '123' || user === 'admetop' && senha === 'eee'){
+      navigation.navigate('Home')
     } else{
       alert('Usuário inválido!')
     }
