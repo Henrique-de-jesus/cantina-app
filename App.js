@@ -1,5 +1,7 @@
+import AdminScreen from './screens/AdminScreen'
 import LoginScreen from './screens/LoginScreen';
-import HomeScreen from './screens/HomeSreen';
+import HomeScreen from './screens/HomeScreen';
+import ForgotScreen from './screens/ForgotScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -9,8 +11,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Admin" component={AdminScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Forgot" component={ForgotScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

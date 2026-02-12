@@ -6,12 +6,14 @@ export default function LoginScreen() {
   const navigation = useNavigation();
   const [user, setUser] = useState('')
   const [senha, setSenha] = useState('')
+  const [esqueceuSenha, setEsqueceuSenha] = useState('')
+
 
   function handlelogin(){
     //1. validar usuário e senha
     //2. redirecionar a tela principal
-    if(user === 'teste@teste.com' && senha === '123'){
-      navigation.navigate('Home');
+    if(user === 'teste@teste.com' && senha === '123' || user === 'admetop' && senha === 'eee'){
+      navigation.navigate('Home')
     } else{
       alert('Usuário inválido!')
     }
@@ -23,6 +25,15 @@ export default function LoginScreen() {
       <TextInput placeholder="Usuário, email ou telefone:" onChangeText={(u) => setUser(u)} style={styles.login}></TextInput>
       <TextInput placeholder="Senha:" secureTextEntry onChangeText={(s) => setSenha(s)} style={styles.login}></TextInput>
        <TouchableOpacity onPress={handlelogin}><Text style={styles.enter}>Entrar</Text></TouchableOpacity>
+       <TouchableOpacity onPress={handlelogin}>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={() => navigation.navigate("Forgot")}>
+  <Text style={{ color: 'blue', marginTop: 10 }}>
+    Esqueceu a senha?
+  </Text>
+</TouchableOpacity>
+
     </View>
   );
 }
