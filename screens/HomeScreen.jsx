@@ -4,7 +4,7 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from "reac
 export default function HomeScreen() {
     return  (
         <View>
-            <Text style={styles.marca}>Bem Vindo!</Text>
+            <Text style={styles.marca}>Olá, ${usuario}</Text>
         </View>
     )
 }
