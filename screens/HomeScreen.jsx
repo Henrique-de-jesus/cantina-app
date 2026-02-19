@@ -1,32 +1,46 @@
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ImageBackground } from "react-native";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ScrollView,ImageBackground } from "react-native";
+import { useEffect, useState } from "react";
+import {getProducts} from '../services/productService'
 
 
 export default function HomeScreen() {
+  const [products, setProducts] = useState([])
+  useEffect(()=>{
+    setProducts(getProducts())
+  },[])
   return (
-    <View style={styles.container}>
-      <ImageBackground source={require('../assets/fundo_home_screen.png')} resizeMode="cover" style={styles.image}>
-        <Text style={styles.marca}>Bem vindo</Text>
-
-        <View>
-          <TouchableOpacity>
-            <Image style={styles.imagem}
-              source={require('../image/salsicha.png')} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image style={styles.imagem}
-              source={require('../image/doguinho.png')} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image style={styles.imagem}
-              source={require('../image/pastel.png')} />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image style={styles.imagem}
-              source={require('../image/coca-cola.png')} />
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
+    <ScrollView style={styles.container}>
+    <ImageBackground source={require('../assets/fundo_home_screen.png')} resizeMode="cover" style={styles.image}>
+      <Text style={styles.marca}>Bem vindo</Text>
+    
+      <View>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={products[0].image} />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/doguinho.png')} />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/pastel.png')} />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/coca-cola.png')} />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/fantaL.png')} />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/guarana.png')} />
+    </TouchableOpacity>
     </View>
+    </ImageBackground>
+    </ScrollView>
   )
 }
 const styles = StyleSheet.create({
