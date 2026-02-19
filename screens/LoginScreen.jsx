@@ -74,13 +74,15 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   enter: {
+    alignItems: 'center',
+    justifyContent: 'center',
     height: 40,
     width: 55,
     borderColor: 'black',
     borderWidth: 2,
     borderRadius: 5,
     margin: 15,
-    padding: 5,
+    padding: 6,
     backgroundColor: '#ff5768'
   }
 });
