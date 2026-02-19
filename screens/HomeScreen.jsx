@@ -2,38 +2,43 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from "reac
 
 
 export default function HomeScreen() {
-    return  (
-        <View>
-            <Text style={styles.marca}>Olá,</Text>
-            <TouchableOpacity>
-            <Image style={styles.imagem}
-            source={require('../image/salsicha.png')}/>
-            </TouchableOpacity>
-              <TouchableOpacity>
-              <Image style={styles.imagem}
-              source={require('../image/doguinho.png')}/>
-              </TouchableOpacity>
-                <TouchableOpacity>
-                <Image style={styles.imagem}
-                source={require('../image/pastel.png')}/>
-                </TouchableOpacity>
-        </View>
-    )
+  return (
+    <View style={styles.container}>
+      <Text style={styles.marca}>Bem vindo</Text>
+    
+      <View>
+    <TouchableOpacity style={styles.imagem}>
+      <Image style={styles.imagem}
+        source={require('../image/salsicha.png')} />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/doguinho.png')} />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/pastel.png')} />
+    </TouchableOpacity>
+    </View>
+    
+    </View>
+  )
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
-    marca: {
+  marca: {
     backgroundColor: '#ff5768',
     textAlign: 'center',
     fontSize: 25,
-    },
-    imagem: {
-      width: 150,
-      height: 150
-    }
+  },
+  imagem: {
+    width: 150,
+    height: 150,
+    borderWidth: 1
+  }
 })
