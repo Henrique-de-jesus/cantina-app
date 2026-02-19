@@ -7,7 +7,7 @@ export default function HomeScreen() {
       <Text style={styles.marca}>Bem vindo</Text>
     
       <View>
-    <TouchableOpacity style={styles.imagem}>
+    <TouchableOpacity>
       <Image style={styles.imagem}
         source={require('../image/salsicha.png')} />
     </TouchableOpacity>
@@ -27,7 +27,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fae1dd',
     // alignItems: 'center',
     // justifyContent: 'center',
   },
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
   imagem: {
     width: 150,
     height: 150,
-    borderWidth: 1
+    borderWidth: 1,
+    margin: 15
   }
 })
