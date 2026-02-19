@@ -1,9 +1,9 @@
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
 
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.marca}>Bem vindo</Text>
     
       <View>
@@ -23,9 +23,17 @@ export default function HomeScreen() {
       <Image style={styles.imagem}
         source={require('../image/coca-cola.png')} />
     </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/fantaL.png')} />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/guarana.png')} />
+    </TouchableOpacity>
     </View>
     
-    </View>
+    </ScrollView>
   )
 }
 const styles = StyleSheet.create({
