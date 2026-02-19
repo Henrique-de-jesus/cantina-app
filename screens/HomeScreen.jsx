@@ -19,6 +19,10 @@ export default function HomeScreen() {
       <Image style={styles.imagem}
         source={require('../image/pastel.png')} />
     </TouchableOpacity>
+    <TouchableOpacity>
+      <Image style={styles.imagem}
+        source={require('../image/coca-cola.png')} />
+    </TouchableOpacity>
     </View>
     
     </View>
@@ -40,6 +44,5 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderWidth: 1,
-    margin: 15
-  }
+    margin: 15  }
 })
