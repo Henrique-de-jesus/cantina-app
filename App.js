@@ -2,8 +2,8 @@ import AdminScreen from './screens/AdminScreen'
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import ForgotScreen from './screens/ForgotScreen';
-import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator} from '@react-navigation/stack';
 
 export default function App() {
   const Stack = createStackNavigator();
