@@ -29,7 +29,7 @@ export default function LoginScreen() {
 </TouchableOpacity>
 
 <TouchableOpacity onPress={() => navigation.navigate("Forgot")}>
-  <Text style={{ color: 'blue', marginTop: 10 }}>
+  <Text style={{ color: 'red', marginTop: 10 }}>
     Esqueceu a senha?
   </Text>
 </TouchableOpacity>

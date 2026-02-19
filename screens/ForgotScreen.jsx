@@ -33,6 +33,7 @@ export default function ForgotScreen() {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#fae1dd',
     flex: 1,
     justifyContent: "center",
     padding: 20,
