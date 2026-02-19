@@ -1,7 +1,13 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
+import { useEffect, useState } from "react";
+import {getProducts} from '../services/productService'
 
 
 export default function HomeScreen() {
+  const [products, setProducts] = useState([])
+  useEffect(()=>{
+    setProducts(getProducts())
+  },[])
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.marca}>Bem vindo</Text>
@@ -9,7 +15,7 @@ export default function HomeScreen() {
       <View>
     <TouchableOpacity>
       <Image style={styles.imagem}
-        source={require('../image/salsicha.png')} />
+        source={products[0].image} />
     </TouchableOpacity>
     <TouchableOpacity>
       <Image style={styles.imagem}
