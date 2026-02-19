@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
   },
   login: {
     height: 40,
+    width: '80%', 
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 5,
