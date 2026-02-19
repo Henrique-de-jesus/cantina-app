@@ -12,10 +12,18 @@ export default function LoginScreen() {
   function handlelogin(){
     //1. validar usuário e senha
     //2. redirecionar a tela principal
+    if (!user.trim()){
+      alert('este campo tem que ser ´preenchido')
+      return
+    }
+    if(!senha.trim()){
+      alert('este campo tem que ser ´preenchido')
+      return
+    }
     if(user === 'teste@teste.com' && senha === '123'){
       navigation.navigate('Home')
     } else{
-      alert('Usuário inválido!')
+      alert('inválido!')
     }
   }
   return (
@@ -58,7 +66,7 @@ const styles = StyleSheet.create({
   },
   login: {
     height: 40,
-    width: '80%', 
+    width:  '80%', 
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 5,
@@ -67,11 +75,12 @@ const styles = StyleSheet.create({
   },
   enter: {
     height: 40,
+    width: 55,
     borderColor: 'black',
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 5,
     margin: 15,
-    padding: 10,
+    padding: 5,
     backgroundColor: '#ff5768'
   }
 });
