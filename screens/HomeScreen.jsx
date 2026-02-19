@@ -6,9 +6,17 @@ export default function HomeScreen() {
         <View>
             <Text style={styles.marca}>Olá,</Text>
             <TouchableOpacity>
-            <Image style={styles.salshicha}
-            source={require('../image/ENROLADINHO-DE-SALSICHA-2.jpg')}/>
+            <Image style={styles.imagem}
+            source={require('../image/salsicha.png')}/>
             </TouchableOpacity>
+              <TouchableOpacity>
+              <Image style={styles.imagem}
+              source={require('../image/doguinho.png')}/>
+              </TouchableOpacity>
+                <TouchableOpacity>
+                <Image style={styles.imagem}
+                source={require('../image/pastel.png')}/>
+                </TouchableOpacity>
         </View>
     )
 }
@@ -24,7 +32,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 25,
     },
-    salshicha: {
+    imagem: {
       width: 150,
       height: 150
     }
