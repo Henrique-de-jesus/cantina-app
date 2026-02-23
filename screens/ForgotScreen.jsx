@@ -52,7 +52,7 @@ export default function ForgotScreen() {
       resizeMode="cover"
     >
       <View style={styles.overlay}>
-        <Text style={styles.title}>🔐 Recuperar Senha</Text>
+        <Text style={styles.title}>Recuperar Senha</Text>
 
         <Text style={styles.subtitle}>
           Digite seu email cadastrado para receber o link de redefinição.
