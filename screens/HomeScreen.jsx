@@ -22,6 +22,7 @@ export default function HomeScreen() {
   async function fetchData() {
     try {
       const data = await getProducts();
+      console.log("Produtos:", data);
       setProducts(data);
     } catch (error) {
       console.log(error);
@@ -48,7 +49,7 @@ export default function HomeScreen() {
         <Text style={styles.marca}>Bem-vindo</Text>
 
         <View style={styles.grid}>
-          {products.length > 0 && (
+          {products.length > 0 && typeof products[0].image === "string" && (
             <TouchableOpacity>
               <Image
                 style={styles.imagem}
