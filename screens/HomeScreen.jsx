@@ -1,123 +1,133 @@
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ScrollView,ImageBackground } from "react-native";
-import { useEffect, useState } from "react";
-import { getProducts } from '../services/productService'
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  ImageBackground,
+  StyleSheet,
+  TouchableOpacity
+} from "react-native";
 
+import { useEffect, useState } from "react";
+import { getProducts } from "../services/productService";
 
 export default function HomeScreen() {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   async function fetchData() {
     try {
       const data = await getProducts();
-      setProducts(data)
-    }
-    catch (error) {
-      console.log(error)
-    }
-    finally {
-      setLoading(false)
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
-  if (loading){
-    return (
-      <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-      <Text>Carregando...</Text>
-    </View>
-    )
-  }else{
 
+  if (loading) {
     return (
-      <ScrollView style={styles.container}>
-        <Text style={styles.marca}>Bem vindo</Text>
-  
-        <View>
-            <TouchableOpacity>
-              <Image style={styles.imagem}
-                source={products[0].image} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image style={styles.imagem}
-                source={require('../image/doguinho.png')} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image style={styles.imagem}
-                source={require('../image/pastel.png')} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image style={styles.imagem}
-                source={require('../image/coca-cola.png')} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image style={styles.imagem}
-                source={require('../image/fantaL.png')} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image style={styles.imagem}
-                source={require('../image/guarana.png')} />
-            </TouchableOpacity>
-      )
-  }
-
+      <View style={styles.loadingContainer}>
+        <Text>Carregando...</Text>
       </View>
+    );
+  }
 
-  useEffect(()=>{
-    setProducts(getProducts())
-  },[])
   return (
     <ScrollView style={styles.container}>
-    <ImageBackground source={require('../assets/fundo_home_screen.png')} resizeMode="cover" style={styles.image}>
-      <Text style={styles.marca}>Bem vindo</Text>
-    
-      <View>
-    <TouchableOpacity>
-      <Image style={styles.imagem}
-        source={products[0].image} />
-    </TouchableOpacity>
-    <TouchableOpacity>
-      <Image style={styles.imagem}
-        source={require('../image/doguinho.png')} />
-    </TouchableOpacity>
-    <TouchableOpacity>
-      <Image style={styles.imagem}
-        source={require('../image/pastel.png')} />
-    </TouchableOpacity>
-    <TouchableOpacity>
-      <Image style={styles.imagem}
-        source={require('../image/coca-cola.png')} />
-    </TouchableOpacity>
-    <TouchableOpacity>
-      <Image style={styles.imagem}
-        source={require('../image/fantaL.png')} />
-    </TouchableOpacity>
-    <TouchableOpacity>
-      <Image style={styles.imagem}
-        source={require('../image/guarana.png')} />
-    </TouchableOpacity>
-    </View>
-    </ImageBackground>
+      <ImageBackground
+        source={require("../assets/fundo_home_screen.png")}
+        resizeMode="cover"
+        style={styles.imageBackground}
+      >
+        <Text style={styles.marca}>Bem-vindo</Text>
+
+        <View style={styles.grid}>
+          {products.length > 0 && (
+            <TouchableOpacity>
+              <Image
+                style={styles.imagem}
+                source={{ uri: products[0].image }}
+              />
+            </TouchableOpacity>
+          )}
+
+          <TouchableOpacity>
+            <Image
+              style={styles.imagem}
+              source={require("../image/doguinho.png")}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Image
+              style={styles.imagem}
+              source={require("../image/pastel.png")}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Image
+              style={styles.imagem}
+              source={require("../image/coca-cola.png")}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Image
+              style={styles.imagem}
+              source={require("../image/fantaL.png")}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Image
+              style={styles.imagem}
+              source={require("../image/guarana.png")}
+            />
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
     </ScrollView>
-  )
+  );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundimage: '../assets/fundo_home_screen.png',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+  },
+  imageBackground: {
+    flex: 1,
+    alignItems: "center",
+    paddingTop: 20,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   marca: {
-    backgroundColor: '#ff5768',
-    textAlign: 'center',
+    backgroundColor: "#ff5768",
+    textAlign: "center",
     fontSize: 25,
+    padding: 10,
+    borderRadius: 8,
+  },
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
   imagem: {
     width: 150,
     height: 150,
     borderWidth: 1,
-    margin: 15
-  }
-})
+    margin: 15,
+    borderRadius: 10,
+  },
+});
