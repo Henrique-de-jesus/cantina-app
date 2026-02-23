@@ -61,6 +61,14 @@ export default function HomeScreen() {
           <TouchableOpacity>
             <Image
               style={styles.imagem}
+              source={require("../image/salsicha.png")}
+            />
+            <Text>Doguinho</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Image
+              style={styles.imagem}
               source={require("../image/doguinho.png")}
             />
             <Text>Doguinho</Text>
