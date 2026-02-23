@@ -8,7 +8,7 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/chefe_de_cozinha.png",
+      "image": "./assets/chefe_cor.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/chefe_de_cozinha.png",
+        "foregroundImage": "./assets/chefe_cor.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true
