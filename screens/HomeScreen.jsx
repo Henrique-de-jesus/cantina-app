@@ -5,7 +5,8 @@ import {
   ScrollView,
   ImageBackground,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  TextAlign
 } from "react-native";
 
 import { useEffect, useState } from "react";
@@ -57,6 +58,13 @@ export default function HomeScreen() {
               />
             </TouchableOpacity>
           )}
+          <TouchableOpacity>
+            <Image
+              style={styles.imagem}
+              source={require("../image/salsicha.png")}
+            />
+            <Text>Salsicha</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity>
             <Image
