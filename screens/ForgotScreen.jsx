@@ -1,4 +1,13 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from "react-native";
+import { 
+  View, 
+  Text, 
+  TextInput, 
+  TouchableOpacity, 
+  StyleSheet, 
+  ActivityIndicator,
+  ImageBackground
+} from "react-native";
+
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -29,55 +38,62 @@ export default function ForgotScreen() {
 
     setLoading(true);
 
-    // Simulação de envio
     setTimeout(() => {
       setLoading(false);
       alert('Se este email estiver cadastrado, você receberá as instruções.');
-      navigation.navigate("Login"); 
+      navigation.navigate("Login");
     }, 2000);
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Recuperar Senha</Text>
+    <ImageBackground
+      source={require("../assets/fundo_home_screen.png")}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
+        <Text style={styles.title}>🔐 Recuperar Senha</Text>
 
-      <Text style={styles.subtitle}>
-        Digite seu email cadastrado para receber o link de redefinição.
-      </Text>
+        <Text style={styles.subtitle}>
+          Digite seu email cadastrado para receber o link de redefinição.
+        </Text>
 
-      <TextInput
-        placeholder="Digite seu email"
-        value={email}
-        onChangeText={setEmail}
-        style={styles.input}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
+        <TextInput
+          placeholder="Digite seu email"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
 
-      {error !== '' && <Text style={styles.error}>{error}</Text>}
+        {error !== '' && <Text style={styles.error}>{error}</Text>}
 
-      <TouchableOpacity 
-        style={[styles.button, loading && { opacity: 0.7 }]} 
-        onPress={handleResetPassword}
-        disabled={loading}
-      >
-        {loading ? (
-          <ActivityIndicator color="#fff" />
-        ) : (
-          <Text style={styles.buttonText}>Enviar</Text>
-        )}
-      </TouchableOpacity>
+        <TouchableOpacity 
+          style={[styles.button, loading && { opacity: 0.7 }]} 
+          onPress={handleResetPassword}
+          disabled={loading}
+        >
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.buttonText}>Enviar</Text>
+          )}
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-        <Text style={styles.backText}>← Voltar para login</Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <Text style={styles.backText}>← Voltar para login</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fae1dd',
+  background: {
+    flex: 1,
+  },
+  overlay: {
     flex: 1,
     justifyContent: "center",
     padding: 20,
