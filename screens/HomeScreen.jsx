@@ -71,6 +71,7 @@ export default function HomeScreen() {
               style={styles.imagem}
               source={require("../image/doguinho.png")}
             />
+            <Text>Dogunho</Text>
           </TouchableOpacity>
 
           <TouchableOpacity>
@@ -78,6 +79,7 @@ export default function HomeScreen() {
               style={styles.imagem}
               source={require("../image/pastel.png")}
             />
+            <Text>Pastel</Text>
           </TouchableOpacity>
 
           <TouchableOpacity>
@@ -85,6 +87,7 @@ export default function HomeScreen() {
               style={styles.imagem}
               source={require("../image/coca-cola.png")}
             />
+            <Text>Coca cola</Text>
           </TouchableOpacity>
 
           <TouchableOpacity>
@@ -92,6 +95,7 @@ export default function HomeScreen() {
               style={styles.imagem}
               source={require("../image/fantaL.png")}
             />
+            <Text>Fanta laranja</Text>
           </TouchableOpacity>
 
           <TouchableOpacity>
@@ -99,6 +103,23 @@ export default function HomeScreen() {
               style={styles.imagem}
               source={require("../image/guarana.png")}
             />
+            <Text>Guaraná</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Image
+              style={styles.imagem}
+              source={require("../image/miniPizza.png")}
+            />
+            <Text>Mini Pizza</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Image
+              style={styles.imagem}
+              source={require("../image/coxinha.png")}
+            />
+            <Text>Coxinha</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
