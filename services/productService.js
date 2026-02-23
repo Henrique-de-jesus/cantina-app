@@ -1,7 +1,7 @@
 import { products } from "../data/database";
-export const getProducts = () => {
+export const getProducts = async () => {
     console.log("banco simulado carregado!")
-    console.log(products)
+    console.log(products[0])
     return products;
 };
 export const getProductById = (id) => {
