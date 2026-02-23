@@ -5,8 +5,7 @@ import {
   ScrollView,
   ImageBackground,
   StyleSheet,
-  TouchableOpacity,
-  TextAlign
+  TouchableOpacity
 } from "react-native";
 
 import { useEffect, useState } from "react";
@@ -50,7 +49,7 @@ export default function HomeScreen() {
         <Text style={styles.marca}>Bem-vindo</Text>
 
         <View style={styles.grid}>
-          {products.length > 0 && typeof products[0].image === "string" && (
+          {products.length > 0 && typeof products[0].image === "String" (
             <TouchableOpacity>
               <Image
                 style={styles.imagem}
@@ -58,13 +57,6 @@ export default function HomeScreen() {
               />
             </TouchableOpacity>
           )}
-          <TouchableOpacity>
-            <Image
-              style={styles.imagem}
-              source={require("../image/salsicha.png")}
-            />
-            <Text>Salsicha</Text>
-          </TouchableOpacity>
 
           <TouchableOpacity>
             <Image
