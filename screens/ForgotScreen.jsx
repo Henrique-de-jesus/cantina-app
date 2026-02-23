@@ -1,31 +1,75 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from "react-native";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ForgotScreen() {
   const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const navigation = useNavigation();
+
+  function validateEmail(email) {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  }
 
   function handleResetPassword() {
+    setError('');
+
     if (email === '') {
-      alert('Digite seu email');
+      setError('Digite seu email');
       return;
     }
 
-    alert('Link de redefinição enviado para ' + email);
+    if (!validateEmail(email)) {
+      setError('Digite um email válido');
+      return;
+    }
+
+    setLoading(true);
+
+    // Simulação de envio
+    setTimeout(() => {
+      setLoading(false);
+      alert('Se este email estiver cadastrado, você receberá as instruções.');
+      navigation.navigate("Login"); 
+    }, 2000);
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Recuperar Senha</Text>
 
+      <Text style={styles.subtitle}>
+        Digite seu email cadastrado para receber o link de redefinição.
+      </Text>
+
       <TextInput
         placeholder="Digite seu email"
         value={email}
         onChangeText={setEmail}
         style={styles.input}
+        keyboardType="email-address"
+        autoCapitalize="none"
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleResetPassword}>
-        <Text style={styles.buttonText}>Enviar</Text>
+      {error !== '' && <Text style={styles.error}>{error}</Text>}
+
+      <TouchableOpacity 
+        style={[styles.button, loading && { opacity: 0.7 }]} 
+        onPress={handleResetPassword}
+        disabled={loading}
+      >
+        {loading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <Text style={styles.buttonText}>Enviar</Text>
+        )}
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <Text style={styles.backText}>← Voltar para login</Text>
       </TouchableOpacity>
     </View>
   );
@@ -41,24 +85,41 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 10,
     textAlign: "center",
+  },
+  subtitle: {
+    textAlign: "center",
+    marginBottom: 20,
+    color: "#555",
   },
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
-    padding: 10,
+    padding: 12,
     borderRadius: 8,
-    marginBottom: 15,
+    marginBottom: 10,
+    backgroundColor: "#fff"
+  },
+  error: {
+    color: "red",
+    marginBottom: 10,
+    textAlign: "center"
   },
   button: {
     backgroundColor: "#ff5768",
-    padding: 12,
+    padding: 14,
     borderRadius: 8,
     alignItems: "center",
+    marginBottom: 15,
   },
   buttonText: {
     color: "#fff",
     fontWeight: "bold",
   },
+  backText: {
+    textAlign: "center",
+    color: "#333",
+    fontWeight: "500"
+  }
 });
