@@ -19,6 +19,11 @@ export default function HomeScreen() {
     fetchData();
   }, []);
 
+  function handlePress(produto) {
+    console.log("Produto clicado", produto)
+    setProducts(products)
+  }
+
   async function fetchData() {
     try {
       const data = await getProducts();
@@ -57,14 +62,15 @@ export default function HomeScreen() {
               />
             </TouchableOpacity>
           )}
-
-          <TouchableOpacity>
+            <TouchableOpacity
+            key={products.id}
+            onPress={handlePress}>
             <Image
               style={styles.imagem}
               source={require("../image/salsicha.png")}
             />
-            <Text>Doguinho</Text>
-          </TouchableOpacity>
+            <Text>salsicha</Text>
+          </TouchableOpacity>)
 
           <TouchableOpacity>
             <Image
