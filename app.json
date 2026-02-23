@@ -4,7 +4,7 @@
     "slug": "cantina-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/chefe_de_cozinha.png",
+    "icon": "./assets/chefe_cor.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {

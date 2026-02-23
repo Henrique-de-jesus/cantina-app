@@ -63,7 +63,7 @@ export default function HomeScreen() {
               style={styles.imagem}
               source={require("../image/doguinho.png")}
             />
-            <Text>Dogunho</Text>
+            <Text>Doguinho</Text>
           </TouchableOpacity>
 
           <TouchableOpacity>
