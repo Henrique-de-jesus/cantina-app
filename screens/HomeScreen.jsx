@@ -49,11 +49,11 @@ export default function HomeScreen() {
         <Text style={styles.marca}>Bem-vindo</Text>
 
         <View style={styles.grid}>
-          {products.length > 0 && typeof products[0].image === "String" (
+          {products.length > 0 && typeof products[0].image === String (
             <TouchableOpacity>
               <Image
                 style={styles.imagem}
-                source={{ uri: products[0].image }}
+                source={{ uri: products[0].image.toString() }}
               />
             </TouchableOpacity>
           )}
