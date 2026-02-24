@@ -10,18 +10,27 @@ import {
 
 import { useEffect, useState } from "react";
 import { getProducts } from "../services/productService";
+import { products as produtosLocais } from "../data/database";
 
 export default function HomeScreen() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [produtoSelecionado, setProdutoSelecionado] = useState(null);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  function handlePress(produto) {
-    console.log("Produto clicado", produto)
-    setProducts(products)
+  function handlePress(nome) {
+    const produtoEncontrado = products.find(
+      (products) => products.nome.toLowerCase() === nome.toLowerCase()
+    );
+
+    if (produtoEncontrado) {
+      setProdutoSelecionado(produtoEncontrado);
+    } else {
+      console.log("Produto não encontrado!")
+    }
   }
 
   async function fetchData() {
@@ -53,26 +62,52 @@ export default function HomeScreen() {
       >
         <Text style={styles.marca}>Bem-vindo</Text>
 
+        {produtoSelecionado &&(
+          <View style={styles.card}>
+            <Text style={styles.titulo}>
+              {produtoSelecionado.nome}
+            </Text>
+
+            <Text>
+                preço: {produtoSelecionado.preco}
+            </Text>
+
+            <Text>
+                descrição: {produtoSelecionado.descricao}
+            </Text>
+          </View>
+        )}
+
         <View style={styles.grid}>
-          {products.length > 0 && typeof products[0].image === String (
-            <TouchableOpacity>
-              <Image
-                style={styles.imagem}
-                source={{ uri: products[0].image.toString() }}
-              />
-            </TouchableOpacity>
-          )}
-            <TouchableOpacity
-            key={products.id}
-            onPress={handlePress}>
+          {/* Produto vindo da API */}
+          {products.length > 0 &&
+            typeof products[0].image === "string" && (
+              <TouchableOpacity
+                key={products[0].id}
+                onPress={() => handlePress(products[0].name)}
+              >
+                <Image
+                  style={styles.imagem}
+                  source={{ uri: products[0].image }}
+                />
+                <Text>{products[0].name}</Text>
+              </TouchableOpacity>
+            )}
+
+          {/* Produtos fixos */}
+          <TouchableOpacity onPress={() => handlePress("Salsicha")}>
             <Image
               style={styles.imagem}
               source={require("../image/salsicha.png")}
             />
-            <Text>salsicha</Text>
-          </TouchableOpacity>)
+            <Text>Salsicha</Text>
+            <View>
 
-          <TouchableOpacity>
+              
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => handlePress("Dogão")}>
             <Image
               style={styles.imagem}
               source={require("../image/doguinho.png")}
@@ -80,7 +115,7 @@ export default function HomeScreen() {
             <Text>Doguinho</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handlePress("Pastel")}>
             <Image
               style={styles.imagem}
               source={require("../image/pastel.png")}
@@ -88,15 +123,15 @@ export default function HomeScreen() {
             <Text>Pastel</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handlePress("Coca Cola")}>
             <Image
               style={styles.imagem}
               source={require("../image/coca-cola.png")}
             />
-            <Text>Coca cola</Text>
+            <Text>Coca Cola</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handlePress("Fanta Laranja")}>
             <Image
               style={styles.imagem}
               source={require("../image/fantaL.png")}
@@ -104,7 +139,7 @@ export default function HomeScreen() {
             <Text>Fanta laranja</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handlePress("Guaraná")}>
             <Image
               style={styles.imagem}
               source={require("../image/guarana.png")}
@@ -112,7 +147,7 @@ export default function HomeScreen() {
             <Text>Guaraná</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handlePress("Mini Pizza")}>
             <Image
               style={styles.imagem}
               source={require("../image/miniPizza.png")}
@@ -120,7 +155,7 @@ export default function HomeScreen() {
             <Text>Mini Pizza</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => handlePress("Coxinha")}>
             <Image
               style={styles.imagem}
               source={require("../image/coxinha.png")}
@@ -166,4 +201,17 @@ const styles = StyleSheet.create({
     margin: 15,
     borderRadius: 10,
   },
+  card: {
+    backgroundColor: "#fff",
+    padding: 15,
+    margin: 20,
+    borderRadius: 10,
+    width: 150,
+    elevation: 5
+  },
+  titulo: {
+    fontSize: 18,
+    fontWeight: "bold",
+    
+  }
 });

@@ -105,7 +105,7 @@ export const products = [{
 },
 {
     id: 11,
-    nome: "Fanta de laranja",
+    nome: "Fanta laranja",
     descricao: "Refrigerante de laranja",
     preco: 3.49,
     estoque: 4,
