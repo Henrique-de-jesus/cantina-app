@@ -5,12 +5,13 @@ import {
   ScrollView,
   ImageBackground,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 
 import { useEffect, useState } from "react";
 import { getProducts } from "../services/productService";
 import { products as produtosLocais } from "../data/database";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const [products, setProducts] = useState([]);
@@ -54,6 +55,7 @@ export default function HomeScreen() {
   }
 
   return (
+    <SafeAreaView style={styles.container}>
     <ScrollView style={styles.container}>
       <ImageBackground
         source={require("../assets/fundo_home_screen.png")}
@@ -77,7 +79,6 @@ export default function HomeScreen() {
             </Text>
           </View>
         )}
-
         <View style={styles.grid}>
           {/* Produto vindo da API */}
           {products.length > 0 &&
@@ -95,16 +96,14 @@ export default function HomeScreen() {
             )}
 
           {/* Produtos fixos */}
+       
           <TouchableOpacity onPress={() => handlePress("Salsicha")}>
             <Image
               style={styles.imagem}
               source={require("../image/salsicha.png")}
             />
             <Text>Salsicha</Text>
-            <View>
 
-              
-            </View>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => handlePress("Dogão")}>
@@ -165,6 +164,7 @@ export default function HomeScreen() {
         </View>
       </ImageBackground>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
