@@ -82,7 +82,7 @@ export default function ForgotScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.backText}>← Voltar para login</Text>
+          <Text style={styles.backText}>Voltar para login</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
