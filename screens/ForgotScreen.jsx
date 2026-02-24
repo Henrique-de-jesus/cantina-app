@@ -40,7 +40,7 @@ export default function ForgotScreen() {
 
     setTimeout(() => {
       setLoading(false);
-      alert('Se este email estiver cadastrado, você receberá as instruções.');
+      alert('Instruções enviadas para recuperação de senha.');
       navigation.navigate("Login");
     }, 2000);
   }
