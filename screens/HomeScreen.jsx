@@ -103,69 +103,69 @@ export default function HomeScreen() {
 
             {/* Produtos fixos */}
 
-            <TouchableOpacity onPress={() => handlePress("Salsicha")}>
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Salsicha")}>
               <Image
-                style={styles.imagem}
+              style={styles.imagem}
                 source={require("../image/salsicha.png")}
               />
-              <Text>Salsicha</Text>
+              <Text style={styles.comidaText}>Salsicha</Text>
 
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => handlePress("Dogão")}>
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Dogão")}>
               <Image
-                style={styles.imagem}
+              style={styles.imagem}
                 source={require("../image/doguinho.png")}
               />
-              <Text>Doguinho</Text>
+              <Text style={styles.comidaText}>Doguinho</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => handlePress("Pastel")}>
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Pastel")}>
               <Image
-                style={styles.imagem}
+              style={styles.imagem}
                 source={require("../image/pastel.png")}
               />
-              <Text>Pastel</Text>
+              <Text style={styles.comidaText}>Pastel</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => handlePress("Coca Cola")}>
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Coca Cola")}>
               <Image
-                style={styles.imagem}
+              style={styles.imagem}
                 source={require("../image/coca-cola.png")}
               />
-              <Text>Coca Cola</Text>
+              <Text style={styles.comidaText}>Coca Cola</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => handlePress("Fanta Laranja")}>
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Fanta Laranja")}>
               <Image
-                style={styles.imagem}
+              style={styles.imagem}
                 source={require("../image/fantaL.png")}
               />
-              <Text>Fanta laranja</Text>
+              <Text style={styles.comidaText}>Fanta laranja</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => handlePress("Guaraná")}>
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Guaraná")}>
               <Image
-                style={styles.imagem}
+              style={styles.imagem}
                 source={require("../image/guarana.png")}
               />
-              <Text>Guaraná</Text>
+              <Text style={styles.comidaText}>Guaraná</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => handlePress("Mini Pizza")}>
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Mini Pizza")}>
               <Image
-                style={styles.imagem}
+              style={styles.imagem}
                 source={require("../image/miniPizza.png")}
               />
-              <Text>Mini Pizza</Text>
+              <Text style={styles.comidaText}>Mini Pizza</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => handlePress("Coxinha")}>
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Coxinha")}>
               <Image
-                style={styles.imagem}
+              style={styles.imagem}
                 source={require("../image/coxinha.png")}
               />
-              <Text>Coxinha</Text>
+              <Text style={styles.comidaText}>Coxinha</Text>
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -204,10 +204,6 @@ const styles = StyleSheet.create({
   imagem: {
     width: 150,
     height: 150,
-    borderWidth: 1,
-    margin: 15,
-    borderRadius: 10,
-    marginBottom: 20
   },
   card: {
     backgroundColor: "#fff",
@@ -236,5 +232,16 @@ const styles = StyleSheet.create({
   cardText:{
     fontWeight: "bold",
     textAlign: "center",
+  },
+  cardComida:{
+    borderWidth: 1,
+    margin: 15,
+    borderRadius: 10,
+    marginBottom: 20
+  },
+  comidaText:{
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10
   }
 });
