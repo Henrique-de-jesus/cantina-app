@@ -3,6 +3,7 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import ForgotScreen from './screens/ForgotScreen';
 import CodigoForgot from './screens/CodigoForgot';
+import RedefinirSenha from './screens/RedefinirSenha';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Forgot" component={ForgotScreen} />
         <Stack.Screen name="CodigoForgot" component={CodigoForgot} />
+        <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} />
       </Stack.Navigator>
     </NavigationContainer>
   );
