@@ -77,6 +77,12 @@ export default function HomeScreen() {
             <Text>
                 descrição: {produtoSelecionado.descricao}
             </Text>
+            <TouchableOpacity>
+                <Text style={styles.cardBotao1}>Adicionar ao carrinho</Text>
+            </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={styles.cardBotao2}>Cancelar</Text>
+                </TouchableOpacity>
           </View>
         )}
         <View style={styles.grid}>
@@ -193,6 +199,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
+    marginBottom: 20
   },
   imagem: {
     width: 150,
@@ -200,18 +207,33 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     margin: 15,
     borderRadius: 10,
+    marginBottom: 20
   },
   card: {
     backgroundColor: "#fff",
     padding: 15,
     margin: 20,
     borderRadius: 10,
-    width: 150,
+    width: 300,
     elevation: 5
   },
   titulo: {
     fontSize: 18,
     fontWeight: "bold",
     
+  },
+  cardBotao1:{
+    fontWeight: "bold",
+    backgroundColor: "#ff5768",
+    textAlign: "center",
+    padding: 10,
+    borderRadius: 8
+  },
+  cardBotao2:{
+    fontWeight: "bold",
+    backgroundColor: "#A69494",
+    textAlign: "center",
+    padding: 10,
+    borderRadius: 8
   }
 });
