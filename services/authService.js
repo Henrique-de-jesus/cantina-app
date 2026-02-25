@@ -8,6 +8,10 @@ export const login = (email, senha) => {
     return user || null;
 };
 
+export const authService = {
+    login,
+};
+
 export const autenticarUser = (email, senha, navigation) => {
     const user = login(email, senha);
 
@@ -17,7 +21,7 @@ export const autenticarUser = (email, senha, navigation) => {
     }
 
     if (user.role === "admin") {
-        navigation.navigate("AdminHome");
+        navigation.navigate("Home");
     } else {
         navigation.navigate("Home");
     }

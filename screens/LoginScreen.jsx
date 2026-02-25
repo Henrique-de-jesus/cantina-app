@@ -1,48 +1,75 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ImageBackground } from "react-native";
-
 import { authService } from "../services/authService";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  const [user, setUser] = useState('')
-  const [senha, setSenha] = useState('')
-  const [esqueceuSenha, setEsqueceuSenha] = useState('')
-
+  const [user, setUser] = useState('');
+  const [senha, setSenha] = useState('');
 
   function handlelogin() {
-    //1. validar usuário e senha
-    //2. redirecionar a tela principal
     if (!user.trim()) {
-      alert('este campo tem que ser ´preenchido')
-      return
+      alert('Este campo precisa ser preenchido');
+      return;
     }
+
     if (!senha.trim()) {
-      alert('este campo tem que ser ´preenchido')
-      return
+      alert('Este campo precisa ser preenchido');
+      return;
     }
-    if (user === 'teste@teste.com' && senha === '123') {
-      navigation.navigate('Home')
+
+    const usuarioLogado = authService.login(user, senha);
+
+    if (!usuarioLogado) {
+      alert('Usuário ou senha inválidos!');
+      return;
+    }
+
+    if (usuarioLogado.role === "admin") {
+      navigation.navigate("Home");
     } else {
-      alert('inválido!')
+      navigation.navigate("Home");
     }
   }
+
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('../assets/fundo_home_screen.png')} resizeMode="cover" style={[styles.fundo, styles.container]}>
-        <Image style={styles.image} source={require('../assets/chefe_de_cozinha.png')}></Image>
+      <ImageBackground
+        source={require('../assets/fundo_home_screen.png')}
+        resizeMode="cover"
+        style={[styles.fundo, styles.container]}
+      >
+        <Image
+          style={styles.image}
+          source={require('../assets/chefe_de_cozinha.png')}
+        />
+
         <Text style={styles.text}>Login</Text>
-        <TextInput placeholder="Usuário, email ou telefone:" onChangeText={(u) => setUser(u)} style={styles.login}></TextInput>
-        <TextInput placeholder="Senha:" secureTextEntry onChangeText={(s) => setSenha(s)} style={styles.login}></TextInput>
-        <TouchableOpacity onPress={handlelogin}><Text style={styles.enter}>Entrar</Text></TouchableOpacity>
-        <TouchableOpacity onPress={handlelogin}></TouchableOpacity>
+
+        <TextInput
+          placeholder="Usuário, email ou telefone:"
+          onChangeText={setUser}
+          style={styles.login}
+        />
+
+        <TextInput
+          placeholder="Senha:"
+          secureTextEntry
+          onChangeText={setSenha}
+          style={styles.login}
+        />
+
+        <TouchableOpacity onPress={handlelogin}>
+          <Text style={styles.enter}>Entrar</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("Forgot")}>
           <Text style={{ color: 'red', marginTop: 10 }}>
             Esqueceu a senha?
           </Text>
         </TouchableOpacity>
+
       </ImageBackground>
     </View>
   );

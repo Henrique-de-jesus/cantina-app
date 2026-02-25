@@ -1,19 +1,18 @@
-//Usuario
-export const user = [{
+export const users = [{
     id: 1,
     nome: "usuario",
-    email: "teste@gmail.com",
+    email: "user@gmail.com",
     senha: "123",
     role: "user"
-}];
-[{
+},
+{
     id: 2,
     nome: "administrador",
-    email: "Admin@teste.com",
+    email: "admin@gmail.com",
     senha: "321",
-    role: "Admin"
-
+    role: "admin"
 }];
+
 export const products = [{
     id: 1,
     nome: "Salsicha",
