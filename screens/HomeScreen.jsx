@@ -80,7 +80,8 @@ export default function HomeScreen() {
               <TouchableOpacity style={styles.cardBotao1}>
                 <Text style={styles.cardText}>Adicionar ao carrinho</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.cardBotao2}>
+              <TouchableOpacity style={styles.cardBotao2}
+              onPress={() => setProdutoSelecionado(null)}>
                 <Text style={styles.cardText}>Cancelar</Text>
               </TouchableOpacity>
             </View>
@@ -243,5 +244,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 10
-  }
+  },
+
+  
 });
