@@ -214,26 +214,26 @@ const styles = StyleSheet.create({
     padding: 15,
     margin: 20,
     borderRadius: 10,
-    width: 300,
+    width: 330,
     elevation: 5
   },
   titulo: {
     fontSize: 18,
     fontWeight: "bold",
-    
   },
   cardBotao1:{
     fontWeight: "bold",
     backgroundColor: "#ff5768",
     textAlign: "center",
     padding: 10,
-    borderRadius: 8
+    borderRadius: 8,
+    margin:15,
   },
   cardBotao2:{
     fontWeight: "bold",
     backgroundColor: "#A69494",
     textAlign: "center",
     padding: 10,
-    borderRadius: 8
+    borderRadius: 8,
   }
 });
