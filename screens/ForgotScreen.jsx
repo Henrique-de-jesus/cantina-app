@@ -1,12 +1,4 @@
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  TouchableOpacity, 
-  StyleSheet, 
-  ActivityIndicator,
-  ImageBackground
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator,ImageBackground} from "react-native";
 
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -41,7 +33,7 @@ export default function ForgotScreen() {
     setTimeout(() => {
       setLoading(false);
       alert('Instruções enviadas para recuperação de senha.');
-      navigation.navigate("Login");
+      navigation.navigate("CodigoForgot");
     }, 2000);
   }
 
@@ -81,7 +73,7 @@ export default function ForgotScreen() {
           )}
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <TouchableOpacity onPress={() => navigation.navigate("CodigoForgot")}>
           <Text style={styles.backText}>Voltar para login</Text>
         </TouchableOpacity>
       </View>
