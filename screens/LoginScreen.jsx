@@ -2,6 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ImageBackground } from "react-native";
 
+import { authService } from "../services/authService";
+
 export default function LoginScreen() {
   const navigation = useNavigation();
   const [user, setUser] = useState('')
