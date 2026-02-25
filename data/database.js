@@ -2,16 +2,16 @@
 export const user = [{
     id: 1,
     nome: "usuario",
-    email: "teste@teste.com",
+    email: "teste@gmail.com",
     senha: "123",
-    tipo: "user"
+    role: "user"
 }];
 [{
     id: 2,
     nome: "administrador",
     email: "Admin@teste.com",
     senha: "321",
-    tipo: "Admin"
+    role: "Admin"
 
 }];
 export const products = [{
