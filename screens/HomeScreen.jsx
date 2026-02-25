@@ -56,120 +56,120 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-    <ScrollView style={styles.container}>
-      <ImageBackground
-        source={require("../assets/fundo_home_screen.png")}
-        resizeMode="cover"
-        style={styles.imageBackground}
-      >
-        <Text style={styles.marca}>Bem-vindo</Text>
+      <ScrollView style={styles.container}>
+        <ImageBackground
+          source={require("../assets/fundo_home_screen.png")}
+          resizeMode="cover"
+          style={styles.imageBackground}
+        >
+          <Text style={styles.marca}>Bem-vindo</Text>
 
-        {produtoSelecionado &&(
-          <View style={styles.card}>
-            <Text style={styles.titulo}>
-              {produtoSelecionado.nome}
-            </Text>
+          {produtoSelecionado && (
+            <View style={styles.card}>
+              <Text style={styles.titulo}>
+                {produtoSelecionado.nome}
+              </Text>
 
-            <Text>
+              <Text>
                 preço: {produtoSelecionado.preco}
-            </Text>
+              </Text>
 
-            <Text>
+              <Text>
                 descrição: {produtoSelecionado.descricao}
-            </Text>
-            <TouchableOpacity>
-                <Text style={styles.cardBotao1}>Adicionar ao carrinho</Text>
-            </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.cardBotao2}>Cancelar</Text>
-                </TouchableOpacity>
-          </View>
-        )}
-        <View style={styles.grid}>
-          {/* Produto vindo da API */}
-          {products.length > 0 &&
-            typeof products[0].image === "string" && (
-              <TouchableOpacity
-                key={products[0].id}
-                onPress={() => handlePress(products[0].name)}
-              >
-                <Image
-                  style={styles.imagem}
-                  source={{ uri: products[0].image }}
-                />
-                <Text>{products[0].name}</Text>
+              </Text>
+              <TouchableOpacity style={styles.cardBotao1}>
+                <Text style={styles.cardText}>Adicionar ao carrinho</Text>
               </TouchableOpacity>
-            )}
+              <TouchableOpacity style={styles.cardBotao2}>
+                <Text style={styles.cardText}>Cancelar</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+          <View style={styles.grid}>
+            {/* Produto vindo da API */}
+            {products.length > 0 &&
+              typeof products[0].image === "string" && (
+                <TouchableOpacity
+                  key={products[0].id}
+                  onPress={() => handlePress(products[0].name)}
+                >
+                  <Image
+                    style={styles.imagem}
+                    source={{ uri: products[0].image }}
+                  />
+                  <Text>{products[0].name}</Text>
+                </TouchableOpacity>
+              )}
 
-          {/* Produtos fixos */}
-       
-          <TouchableOpacity onPress={() => handlePress("Salsicha")}>
-            <Image
-              style={styles.imagem}
-              source={require("../image/salsicha.png")}
-            />
-            <Text>Salsicha</Text>
+            {/* Produtos fixos */}
 
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => handlePress("Salsicha")}>
+              <Image
+                style={styles.imagem}
+                source={require("../image/salsicha.png")}
+              />
+              <Text>Salsicha</Text>
 
-          <TouchableOpacity onPress={() => handlePress("Dogão")}>
-            <Image
-              style={styles.imagem}
-              source={require("../image/doguinho.png")}
-            />
-            <Text>Doguinho</Text>
-          </TouchableOpacity>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => handlePress("Pastel")}>
-            <Image
-              style={styles.imagem}
-              source={require("../image/pastel.png")}
-            />
-            <Text>Pastel</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => handlePress("Dogão")}>
+              <Image
+                style={styles.imagem}
+                source={require("../image/doguinho.png")}
+              />
+              <Text>Doguinho</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => handlePress("Coca Cola")}>
-            <Image
-              style={styles.imagem}
-              source={require("../image/coca-cola.png")}
-            />
-            <Text>Coca Cola</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => handlePress("Pastel")}>
+              <Image
+                style={styles.imagem}
+                source={require("../image/pastel.png")}
+              />
+              <Text>Pastel</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => handlePress("Fanta Laranja")}>
-            <Image
-              style={styles.imagem}
-              source={require("../image/fantaL.png")}
-            />
-            <Text>Fanta laranja</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => handlePress("Coca Cola")}>
+              <Image
+                style={styles.imagem}
+                source={require("../image/coca-cola.png")}
+              />
+              <Text>Coca Cola</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => handlePress("Guaraná")}>
-            <Image
-              style={styles.imagem}
-              source={require("../image/guarana.png")}
-            />
-            <Text>Guaraná</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => handlePress("Fanta Laranja")}>
+              <Image
+                style={styles.imagem}
+                source={require("../image/fantaL.png")}
+              />
+              <Text>Fanta laranja</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => handlePress("Mini Pizza")}>
-            <Image
-              style={styles.imagem}
-              source={require("../image/miniPizza.png")}
-            />
-            <Text>Mini Pizza</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => handlePress("Guaraná")}>
+              <Image
+                style={styles.imagem}
+                source={require("../image/guarana.png")}
+              />
+              <Text>Guaraná</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => handlePress("Coxinha")}>
-            <Image
-              style={styles.imagem}
-              source={require("../image/coxinha.png")}
-            />
-            <Text>Coxinha</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </ScrollView>
+            <TouchableOpacity onPress={() => handlePress("Mini Pizza")}>
+              <Image
+                style={styles.imagem}
+                source={require("../image/miniPizza.png")}
+              />
+              <Text>Mini Pizza</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => handlePress("Coxinha")}>
+              <Image
+                style={styles.imagem}
+                source={require("../image/coxinha.png")}
+              />
+              <Text>Coxinha</Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -221,19 +221,20 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-  cardBotao1:{
-    fontWeight: "bold",
+  cardBotao1: {
     backgroundColor: "#ff5768",
-    textAlign: "center",
     padding: 10,
     borderRadius: 8,
-    margin:15,
+    margin: 10,
   },
-  cardBotao2:{
-    fontWeight: "bold",
+  cardBotao2: {
     backgroundColor: "#A69494",
-    textAlign: "center",
     padding: 10,
     borderRadius: 8,
+    margin: 10,
+  },
+  cardText:{
+    fontWeight: "bold",
+    textAlign: "center",
   }
 });
