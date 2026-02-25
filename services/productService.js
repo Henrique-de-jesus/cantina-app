@@ -2,8 +2,8 @@ import { products } from "../data/database";
 import { login } from "../services/authService";
 
 const isAdmin = (user) => {
-    if(!user || user.role)
-
+    if(!user || user.role){
+    }
 };
 
 
