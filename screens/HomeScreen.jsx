@@ -1,29 +1,51 @@
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  ImageBackground,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, ScrollView, ImageBackground, StyleSheet, TouchableOpacity, } from "react-native";
 
 import { useEffect, useState, useContext } from "react";
 import { getProducts, increaseStock, decreaseStock } from "../services/productService";
 import { products as produtosLocais } from "../data/database";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigation } from "@react-navigation/native";
 
 export default function HomeScreen() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
+  const navigation = useNavigation();
+  const [carrinho, setCarrinho] = useState([]);
 
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  function adicionarAoCarrinho(produto) {
+    const produtoExistente = carrinho.find(
+      (item) => item.nome === produto.nome
+    );
+  
+    if (produtoExistente) {
+      const novoCarrinho = carrinho.map((item) =>
+        item.nome === produto.nome
+          ? { ...item, quantidade: item.quantidade + 1 }
+          : item
+      );
+      setCarrinho(novoCarrinho);
+    } else {
+      setCarrinho([...carrinho, { ...produto, quantidade: 1 }]);
+    }
+  
+    navigation.navigate("Carrinho", {
+      carrinho: produtoExistente
+        ? carrinho.map((item) =>
+            item.nome === produto.nome
+              ? { ...item, quantidade: item.quantidade + 1 }
+              : item
+          )
+        : [...carrinho, { ...produto, quantidade: 1 }],
+    });
+  }
 
   function handlePress(nome) {
     const produtoEncontrado = products.find(
@@ -80,7 +102,7 @@ export default function HomeScreen() {
               <Text>
                 descrição: {produtoSelecionado.descricao}
               </Text>
-              <TouchableOpacity style={styles.cardBotao1}>
+              <TouchableOpacity style={styles.cardBotao1} onPress={() => adicionarAoCarrinho(produtoSelecionado)} >
                 <Text style={styles.cardText}>Adicionar ao carrinho</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.cardBotao2}

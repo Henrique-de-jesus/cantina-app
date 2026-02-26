@@ -1,6 +1,7 @@
 import AdminScreen from './screens/AdminScreen'
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
+import CarrinhoScreen from './screens/CarrinhoScreen';
 import ForgotScreen from './screens/ForgotScreen';
 import CodigoForgot from './screens/CodigoForgot';
 import RedefinirSenha from './screens/RedefinirSenha';
@@ -16,6 +17,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Admin" component={AdminScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Carrinho" component={CarrinhoScreen} />
         <Stack.Screen name="Forgot" component={ForgotScreen} />
         <Stack.Screen name="CodigoForgot" component={CodigoForgot} />
         <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} />
