@@ -8,15 +8,18 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { useEffect, useState } from "react";
-import { getProducts } from "../services/productService";
+import { useEffect, useState, useContext } from "react";
+import { getProducts, increaseStock, decreaseStock } from "../services/productService";
 import { products as produtosLocais } from "../data/database";
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { AuthContext } from '../context/AuthContext';
 
 export default function HomeScreen() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
+
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetchData();
@@ -168,6 +171,37 @@ export default function HomeScreen() {
               />
               <Text style={styles.comidaText}>Coxinha</Text>
             </TouchableOpacity>
+
+            {produtoSelecionado && (
+  <>
+    <Text>
+      Estoque: {produtoSelecionado.estoque}
+    </Text>
+
+    {user && user.role === "admin" && (
+      <View>
+        <TouchableOpacity
+          onPress={async () => {
+            await increaseStock(produtoSelecionado.id, 1, user);
+            fetchData();
+          }}
+        >
+          <Text>+ Estoque</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={async () => {
+            await decreaseStock(produtoSelecionado.id, 1, user);
+            fetchData();
+          }}
+        >
+          <Text>- Estoque</Text>
+        </TouchableOpacity>
+      </View>
+    )}
+  </>
+)}
+
           </View>
         </ImageBackground>
       </ScrollView>

@@ -46,3 +46,29 @@ export const deleteProduct = (id, user) => {
     const removedProduct = products.splice(index, 1);
     return removedProduct[0];
 };
+
+export const increaseStock = (id, amount, user) => {
+    isAdmin(user);
+
+    const product = product.find(p => p.id === id);
+
+    if(!product) {
+        throw new Error("Produto não encontrado!");
+    }
+
+    product.estoque =+ amount;
+    return product
+};
+
+export const decreaseStock = (id, amount, user) => {
+    isAdmin(user);
+
+    const product = products.find(p => p.id === id);
+
+    if(!product){
+        throw new Error("Estoque insuficiente!");
+    }
+
+    product.estoque -+ amount;
+    return product;
+};
