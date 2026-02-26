@@ -4,7 +4,10 @@ import { useEffect, useState, useContext } from "react";
 import { getProducts, increaseStock, decreaseStock } from "../services/productService";
 import { products as produtosLocais } from "../data/database";
 import { SafeAreaView } from 'react-native-safe-area-context';
+<<<<<<< Updated upstream
 import { AuthContext } from '../context/AuthContext';
+=======
+>>>>>>> Stashed changes
 import { useNavigation } from "@react-navigation/native";
 
 export default function HomeScreen() {
@@ -13,8 +16,11 @@ export default function HomeScreen() {
   const [produtoSelecionado, setProdutoSelecionado] = useState(null);
   const navigation = useNavigation();
   const [carrinho, setCarrinho] = useState([]);
+<<<<<<< Updated upstream
 
   const { user } = useContext(AuthContext);
+=======
+>>>>>>> Stashed changes
 
   useEffect(() => {
     fetchData();
