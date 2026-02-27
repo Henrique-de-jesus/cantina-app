@@ -87,6 +87,6 @@ const styles = StyleSheet.create({
   btnQtd: { backgroundColor: "#ff5768", padding: 10, borderRadius: 6, marginRight: 10 },
   btnText: { color: "#fff", fontWeight: "bold" },
   total: { fontSize: 18, fontWeight: "bold", marginTop: 15, textAlign: "center" },
-  botao: { backgroundColor: "#333", padding: 12, borderRadius: 8, marginTop: 20 },
+  botao: { backgroundColor: "#333", padding: 12, borderRadius: 8, marginTop: 20, marginBottom: 50 },
   botaoText: { color: "#fff", textAlign: "center" },
 });

@@ -194,6 +194,22 @@ export default function HomeScreen() {
               <Text style={styles.comidaText}>Coxinha</Text>
             </TouchableOpacity>
 
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Folhado de carne")}>
+              <Image
+              style={styles.imagem}
+                source={require("../image/foleadoCarne.png")}
+              />
+              <Text style={styles.comidaText}>Folhado de carne</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Soda")}>
+              <Image
+              style={styles.imagem}
+                source={require("../image/sodaLimao.png")}
+              />
+              <Text style={styles.comidaText}>Soda Limão</Text>
+            </TouchableOpacity>
+
             {produtoSelecionado && (
   <>
     <Text>
