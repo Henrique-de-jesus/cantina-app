@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, ImageBackground, Alert } from "react-native";
 import { useState } from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
 
@@ -29,9 +29,29 @@ export default function CarrinhoScreen() {
   const total = carrinho.reduce((acc, item) => {
     const preco = parseFloat(item.preco) || 0;
     return acc + preco * item.quantidade;
-  }, 0);
+  }, 0)
+  
+  function comprar() {
+  if (carrinho.length === 0) {
+    Alert.alert("Carrinho vazio", "Adicione produtos antes de comprar.");
+    return;
+  }
 
-  return (
+  Alert.alert(
+    "Compra realizada 🎉",
+    "Seu pedido foi efetuado com sucesso!",
+    [
+      {
+        text: "OK",
+        onPress: () => {setCarrinho([]);
+        navigation.navigate("Home");},
+      },
+    ]
+  );
+}
+  
+  ;
+    return (
     <ImageBackground
       source={require("../assets/fundo_home_screen.png")}
       resizeMode="cover"
@@ -68,6 +88,13 @@ export default function CarrinhoScreen() {
       <Text style={styles.total}>Total: R$ {total.toFixed(2)}</Text>
 
       <TouchableOpacity
+        style={styles.botaoCompra}
+        onPress={(comprar)}
+      >
+        <Text style={styles.botaoText}>Comprar</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
         style={styles.botao}
         onPress={() => navigation.goBack()}
       >
@@ -87,6 +114,7 @@ const styles = StyleSheet.create({
   btnQtd: { backgroundColor: "#ff5768", padding: 10, borderRadius: 6, marginRight: 10 },
   btnText: { color: "#fff", fontWeight: "bold" },
   total: { fontSize: 18, fontWeight: "bold", marginTop: 15, textAlign: "center" },
-  botao: { backgroundColor: "#333", padding: 12, borderRadius: 8, marginTop: 20, marginBottom: 50 },
-  botaoText: { color: "#fff", textAlign: "center" },
+  botao: { backgroundColor: "#333", padding: 12, borderRadius: 8, marginTop: 0, marginBottom: 50 },
+  botaoText: { color: "#fff", textAlign: "center", fontWeight: "bold" },
+  botaoCompra: { backgroundColor: "#ff5768", padding: 12, borderRadius: 8, marginTop: 20, marginBottom: 25 }
 });
