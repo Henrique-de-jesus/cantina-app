@@ -12,7 +12,14 @@ export default function CarrinhoScreen() {
 
   function aumentar(index) {
     const novo = [...carrinho];
-    novo[index].quantidade += 1;
+    const item = novo[index];
+  
+    if (item.quantidade >= item.estoque) {
+      Alert.alert("Estoque insuficiente.");
+      return;
+    }
+  
+    item.quantidade += 1;
     setCarrinho(novo);
   }
 
@@ -38,7 +45,7 @@ export default function CarrinhoScreen() {
   }
 
   Alert.alert(
-    "Compra realizada 🎉",
+    "Compra realizada",
     "Seu pedido foi efetuado com sucesso!",
     [
       {

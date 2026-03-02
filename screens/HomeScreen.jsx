@@ -25,27 +25,32 @@ export default function HomeScreen() {
       (item) => item.nome === produto.nome
     );
   
+    const quantidadeAtual = produtoExistente
+      ? produtoExistente.quantidade
+      : 0;
+  
+    if (quantidadeAtual >= produto.estoque) {
+      alert("Estoque insuficiente!");
+      return;
+    }
+  
+    let novoCarrinho;
+  
     if (produtoExistente) {
-      const novoCarrinho = carrinho.map((item) =>
+      novoCarrinho = carrinho.map((item) =>
         item.nome === produto.nome
           ? { ...item, quantidade: item.quantidade + 1 }
           : item
       );
-      setCarrinho(novoCarrinho);
     } else {
-      setCarrinho([...carrinho, { ...produto, quantidade: 1 }]);
+      novoCarrinho = [...carrinho, { ...produto, quantidade: 1 }];
     }
   
+    setCarrinho(novoCarrinho);
+
     navigation.navigate("Carrinho", {
-      carrinho: produtoExistente
-        ? carrinho.map((item) =>
-            item.nome === produto.nome
-              ? { ...item, quantidade: item.quantidade + 1 }
-              : item
-          )
-        : [...carrinho, { ...produto, quantidade: 1 }],
-    });
-  }
+    carrinho: novoCarrinho,
+    })}
 
   function handlePress(nome) {
     const produtoEncontrado = products.find(
@@ -86,7 +91,23 @@ export default function HomeScreen() {
           source={require("../assets/fundo_home_screen.png")}
           resizeMode="cover"
           style={styles.imageBackground}
-        >
+          >
+        <View style={styles.topBar}>
+  <TouchableOpacity
+    style={styles.carrinhoIcon}
+    onPress={() => navigation.navigate("Carrinho", { carrinho })}
+  >
+    <View style={styles.carrinhoContainer}>
+  <Image
+    source={require("../image/carrinho.png")}
+    style={styles.carrinhoImagem}
+  />
+  <View style={styles.badge}>
+    <Text style={styles.badgeTexto}>{carrinho.length}</Text>
+  </View>
+</View>
+  </TouchableOpacity>
+</View>
           <Text style={styles.marca}>Bem-vindo</Text>
 
           {produtoSelecionado && (
@@ -320,5 +341,47 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
 
+  topBar: {
+    width: "100%",
+    alignItems: "flex-end",
+    paddingRight: 20,
+  },
   
+  carrinhoIcon: {
+    backgroundColor: "#ff5768",
+    padding: 10,
+    borderRadius: 20,
+  },
+  
+  carrinhoTexto: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+
+  carrinhoContainer: {
+    position: "relative",
+  },
+  
+  carrinhoImagem: {
+    width: 35,
+    height: 35,
+  },
+  
+  badge: {
+    position: "absolute",
+    top: -5,
+    right: -5,
+    backgroundColor: "red",
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  
+  badgeTexto: {
+    color: "#fff",
+    fontSize: 12,
+    fontWeight: "bold",
+  },
 });
