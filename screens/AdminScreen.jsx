@@ -11,10 +11,6 @@ export default function AdminScreen() {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log("user:", user);
-  console.log("user.role:", user?.role);
-  console.log("User no AdminScreen:", user);
-  console.log("Usuário setado no contexto:", user);
 
   async function fetchData() {
     try {
