@@ -45,7 +45,7 @@ export default function CarrinhoScreen() {
   }
 
   Alert.alert(
-    "Compra realizada 🎉",
+    "Compra realizada",
     "Seu pedido foi efetuado com sucesso!",
     [
       {
