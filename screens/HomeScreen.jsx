@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, ImageBackground, StyleSheet, TouchableOp
 import { useEffect, useState, useContext } from "react";
 import { getProducts, increaseStock, decreaseStock } from "../services/productService";
 import { products as produtosLocais } from "../data/database";
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { AuthContext } from '../context/AuthContext';
 import { useNavigation } from "@react-navigation/native";
 
@@ -85,7 +85,6 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
       <ScrollView style={styles.container}>
         <ImageBackground
           source={require("../assets/fundo_home_screen.png")}
@@ -268,7 +267,6 @@ export default function HomeScreen() {
           </View>
         </ImageBackground>
       </ScrollView>
-    </SafeAreaView>
   );
 }
 
