@@ -80,7 +80,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    
       <ScrollView style={styles.container}>
         <ImageBackground
           source={require("../assets/fundo_home_screen.png")}
@@ -104,7 +104,7 @@ export default function HomeScreen() {
               </Text>
 
               <Text>
-                quantidade: {produtoSelecionado.estoque}
+                estoque: {produtoSelecionado.estoque}
               </Text>
               <TouchableOpacity style={styles.cardBotao1} onPress={() => adicionarAoCarrinho(produtoSelecionado)} >
                 <Text style={styles.cardText}>Adicionar ao carrinho</Text>
@@ -216,9 +216,6 @@ export default function HomeScreen() {
 
             {produtoSelecionado && (
   <>
-    <Text>
-      Estoque: {produtoSelecionado.estoque}
-    </Text>
 
     {user && user.role === "admin" && (
       <View>
@@ -247,7 +244,7 @@ export default function HomeScreen() {
           </View>
         </ImageBackground>
       </ScrollView>
-    </SafeAreaView>
+    
   );
 }
 
@@ -259,6 +256,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingTop: 20,
+    
   },
   loadingContainer: {
     flex: 1,
