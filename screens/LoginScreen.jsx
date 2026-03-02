@@ -1,32 +1,41 @@
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ImageBackground } from "react-native";
 import { authService } from "../services/authService";
+import { AuthContext } from '../context/AuthContext'
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  const [user, setUser] = useState('');
+  const [userLogin, setUserLogin] = useState('')
   const [senha, setSenha] = useState('');
+  const { setUser } = useContext(AuthContext);
 
   function handlelogin() {
     console.log(user)
     if (!user.trim() || !senha.trim()) {
       alert("Preencha todos os campos");
+    if (!userLogin.trim()) {
+      alert('Este campo precisa ser preenchido');
       return;
     }
-  
-    const usuarioLogado = authService.login(user, senha);
-  
+
+    if (!senha.trim()) {
+      alert('Este campo precisa ser preenchido');
+      return;
+    }
+
+    const usuarioLogado = authService.login(userLogin, senha);
+
     if (!usuarioLogado) {
-      alert("Usuário ou senha inválidos!");
+      alert('Usuário ou senha inválidos!');
       return;
     }
-  
-    // Atualiza contexto
-    setUser(usuarioLogado);
-  
-    // Vai para Home
-    navigation.navigate("Home");
+    if (usuarioLogado.role.trim() === "admin") {
+      setUser(usuarioLogado)
+      navigation.navigate("Admin");
+    } else {
+      navigation.navigate("Home");
+    }
   }
 
   return (
@@ -48,6 +57,8 @@ export default function LoginScreen() {
           onChangeText={setUser}
           style={styles.login}
           autoCapitalize = "none"
+          onChangeText={setUserLogin}
+          style={styles.login} autoCapitalize="none"
         />
 
         <TextInput

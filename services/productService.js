@@ -1,74 +1,53 @@
 import { products } from "../data/database";
 
 const isAdmin = (user) => {
-    if (!user || user.role !== "admin") {
-        throw new Error("Acesso negado. Apenas administradores podem realizar essa ação.");
-    }
+  if (!user || user.role !== "admin") {
+    throw new Error("Acesso negado. Apenas administradores podem realizar essa ação.");
+  }
 };
 
 export const getProducts = async () => {
-    return products;
+  return products.map(p => ({ ...p }));
 };
 
 export const getProductById = (id) => {
-    return products.find(product => product.id === id);
+  return products.find(product => product.id === Number(id));
 };
 
 export const addProduct = (newProduct, user) => {
-    isAdmin(user);
-
-    products.push(newProduct);
-    return newProduct;
+  isAdmin(user);
+  products.push(newProduct);
+  return newProduct;
 };
 
 export const updateProduct = (id, updateData, user) => {
-    isAdmin(user);
-
-    const index = products.findIndex(product => product.id === id);
-
-    if (index === -1) {
-        throw new Error("Produto não encontrado!");
-    }
-
-    products[index] = { ...products[index], ...updateData };
-    return products[index];
+  isAdmin(user);
+  const index = products.findIndex(product => product.id === Number(id));
+  if (index === -1) throw new Error("Produto não encontrado!");
+  products[index] = { ...products[index], ...updateData };
+  return products[index];
 };
 
 export const deleteProduct = (id, user) => {
-    isAdmin(user);
-
-    const index = products.findIndex(product => product.id === id);
-
-    if (index === -1) {
-        throw new Error("Produto não encontrado!");
-    }
-
-    const removedProduct = products.splice(index, 1);
-    return removedProduct[0];
+  isAdmin(user);
+  const index = products.findIndex(product => product.id === Number(id));
+  if (index === -1) throw new Error("Produto não encontrado!");
+  const removedProduct = products.splice(index, 1);
+  return removedProduct[0];
 };
 
 export const increaseStock = (id, amount, user) => {
-    isAdmin(user);
-
-    const product = product.find(p => p.id === id);
-
-    if(!product) {
-        throw new Error("Produto não encontrado!");
-    }
-
-    product.estoque =+ amount;
-    return product
+  isAdmin(user);
+  const product = products.find(p => p.id === Number(id));
+  if (!product) throw new Error("Produto não encontrado!");
+  product.estoque += amount;
+  return product;
 };
 
 export const decreaseStock = (id, amount, user) => {
-    isAdmin(user);
-
-    const product = products.find(p => p.id === id);
-
-    if(!product){
-        throw new Error("Estoque insuficiente!");
-    }
-
-    product.estoque -+ amount;
-    return product;
+  isAdmin(user);
+  const product = products.find(p => p.id === Number(id));
+  if (!product) throw new Error("Produto não encontrado!");
+  product.estoque = Math.max(0, product.estoque - amount);
+  return product;
 };

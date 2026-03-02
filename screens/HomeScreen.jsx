@@ -1,5 +1,4 @@
 import { View, Text, Image, ScrollView, ImageBackground, StyleSheet, TouchableOpacity, } from "react-native";
-
 import { useEffect, useState, useContext } from "react";
 import { getProducts, increaseStock, decreaseStock } from "../services/productService";
 import { products as produtosLocais } from "../data/database";
@@ -236,30 +235,9 @@ export default function HomeScreen() {
             </TouchableOpacity>
 
             {produtoSelecionado && (
-  <>
+   <>
 
-    {user && user.role === "admin" && (
-      <View>
-        <TouchableOpacity
-          onPress={async () => {
-            await increaseStock(produtoSelecionado.id, 1, user);
-            fetchData();
-          }}
-        >
-          <Text>+ Estoque</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={async () => {
-            await decreaseStock(produtoSelecionado.id, 1, user);
-            fetchData();
-          }}
-        >
-          <Text>- Estoque</Text>
-        </TouchableOpacity>
-      </View>
-    )}
-  </>
+   </>
 )}
 
           </View>

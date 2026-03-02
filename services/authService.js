@@ -1,15 +1,14 @@
 import { users } from "../data/database";
 
-export const login = (email, senha) => {
-    const user = users.find(
-        (user) => user.email === email && user.senha === senha
-    );
-
-    return user || null;
-};
-
 export const authService = {
-    login,
+  login(emailOuNome, senha) {
+    const usuario = users.find(
+      u =>
+        (u.email === emailOuNome || u.nome === emailOuNome) &&
+        u.senha === senha
+    );
+    return usuario || null;
+  }
 };
 
 export const autenticarUser = (email, senha, navigation) => {
