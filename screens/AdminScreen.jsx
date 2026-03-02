@@ -1,65 +1,53 @@
-import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { useState, useEffect, useContext } from "react";
+import { getProducts } from "../services/productService";
+import { increaseStock, decreaseStock } from "../services/adminService";
+import { AuthContext } from "../context/AuthContext";
 
-export default function LoginScreen() {
-  const navigation = useNavigation();
-  const [user, setUser] = useState('')
-  const [senha, setSenha] = useState('')
+export default function AdminScreen() {
+  const [products, setProducts] = useState([]);
+  const { user } = useContext(AuthContext);
 
-  function handlelogin(){
-    //1. validar usuário e senha
-    //2. redirecionar a tela principal
-    if(user === 'user@gmail.com' && senha === '123'){
-      navigation.navigate('Home');
-    } else{
-      alert('Usuário inválido!')
-    }
+  useEffect(() => { fetchData(); }, []);
+
+  async function fetchData() {
+    const data = await getProducts();
+    setProducts(data);
   }
+  console.log(user)
+  console.log(user.role)
+
+  if (!user || user.role !== "admin") return <Text>Acesso negado</Text>;
+
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={require('../assets/chefe_de_cozinha.png')}></Image>
-       <Text style={styles.text}>Login</Text>
-      <TextInput placeholder="Usuário, email ou telefone:" onChangeText={(u) => setUser(u)} style={styles.login}></TextInput>
-      <TextInput placeholder="Senha:" secureTextEntry onChangeText={(s) => setSenha(s)} style={styles.login}></TextInput>
-       <TouchableOpacity onPress={handlelogin}><Text style={styles.enter}>Entrar</Text></TouchableOpacity>
-    </View>
+    <ScrollView style={styles.container}>
+      {products.map(produto => (
+        <View key={produto.id} style={styles.card}>
+          {produto.image && <Image source={produto.image} style={styles.image} />}
+          <Text style={styles.name}>{produto.nome}</Text>
+          <Text>Estoque: {produto.estoque}</Text>
+
+          <View style={styles.buttons}>
+            <TouchableOpacity style={styles.button} onPress={async () => { await increaseStock(produto.id, 1, user); fetchData(); }}>
+              <Text style={styles.buttonText}>+ Estoque</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={[styles.button, { backgroundColor: "#A69494" }]} onPress={async () => { await decreaseStock(produto.id, 1, user); fetchData(); }}>
+              <Text style={styles.buttonText}>- Estoque</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      ))}
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
-    height: 100,
-    width: 100,
-
-  },
-  text: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    fontSize: 20,
-  },
-  login: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 5,
-    margin: 15,
-    padding: 10,
-  },
-  enter: {
-    height: 40,
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 5,
-    margin: 15,
-    padding: 10,
-    backgroundColor: '#ff5768'
-  }
+  container: { flex: 1, padding: 10 },
+  card: { backgroundColor: "#fff", marginBottom: 15, padding: 15, borderRadius: 10 },
+  name: { fontWeight: "bold", fontSize: 16, marginBottom: 5 },
+  image: { width: 100, height: 100, marginBottom: 5 },
+  buttons: { flexDirection: "row", justifyContent: "space-between", marginTop: 10 },
+  button: { backgroundColor: "#ff5768", padding: 10, borderRadius: 8, flex: 1, marginRight: 5 },
+  buttonText: { color: "#fff", textAlign: "center", fontWeight: "bold" },
 });
