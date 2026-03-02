@@ -33,6 +33,7 @@ export default function HomeScreen() {
       return;
     }
   
+    
     let novoCarrinho;
   
     if (produtoExistente) {
