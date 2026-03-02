@@ -3,7 +3,6 @@ import { View, Text, Image, ScrollView, ImageBackground, StyleSheet, TouchableOp
 import { useEffect, useState, useContext } from "react";
 import { getProducts, increaseStock, decreaseStock } from "../services/productService";
 import { products as produtosLocais } from "../data/database";
-
 import { AuthContext } from '../context/AuthContext';
 import { useNavigation } from "@react-navigation/native";
 
@@ -85,6 +84,7 @@ export default function HomeScreen() {
   }
 
   return (
+    
       <ScrollView style={styles.container}>
         <ImageBackground
           source={require("../assets/fundo_home_screen.png")}
@@ -124,7 +124,7 @@ export default function HomeScreen() {
               </Text>
 
               <Text>
-                quantidade: {produtoSelecionado.estoque}
+                estoque: {produtoSelecionado.estoque}
               </Text>
               <TouchableOpacity style={styles.cardBotao1} onPress={() => adicionarAoCarrinho(produtoSelecionado)} >
                 <Text style={styles.cardText}>Adicionar ao carrinho</Text>
@@ -136,7 +136,7 @@ export default function HomeScreen() {
             </View>
           )}
           <View style={styles.grid}>
-            {/* Produto vindo da API */}
+            
             {products.length > 0 &&
               typeof products[0].image === "string" && (
                 <TouchableOpacity
@@ -236,9 +236,6 @@ export default function HomeScreen() {
 
             {produtoSelecionado && (
   <>
-    <Text>
-      Estoque: {produtoSelecionado.estoque}
-    </Text>
 
     {user && user.role === "admin" && (
       <View>
@@ -267,6 +264,7 @@ export default function HomeScreen() {
           </View>
         </ImageBackground>
       </ScrollView>
+    
   );
 }
 
@@ -278,6 +276,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     paddingTop: 20,
+    
   },
   loadingContainer: {
     flex: 1,
