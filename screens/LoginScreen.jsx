@@ -9,28 +9,23 @@ export default function LoginScreen() {
   const [senha, setSenha] = useState('');
 
   function handlelogin() {
-    if (!user.trim()) {
-      alert('Este campo precisa ser preenchido');
+    if (!user.trim() || !senha.trim()) {
+      alert("Preencha todos os campos");
       return;
     }
-
-    if (!senha.trim()) {
-      alert('Este campo precisa ser preenchido');
-      return;
-    }
-
+  
     const usuarioLogado = authService.login(user, senha);
-
+  
     if (!usuarioLogado) {
-      alert('Usuário ou senha inválidos!');
+      alert("Usuário ou senha inválidos!");
       return;
     }
-
-    if (usuarioLogado.role === "admin") {
-      navigation.navigate("Home");
-    } else {
-      navigation.navigate("Home");
-    }
+  
+    // Atualiza contexto
+    setUser(usuarioLogado);
+  
+    // Vai para Home
+    navigation.navigate("Home");
   }
 
   return (
