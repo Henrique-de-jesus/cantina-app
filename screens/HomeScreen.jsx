@@ -102,6 +102,10 @@ export default function HomeScreen() {
               <Text>
                 descrição: {produtoSelecionado.descricao}
               </Text>
+
+              <Text>
+                quantidade: {produtoSelecionado.estoque}
+              </Text>
               <TouchableOpacity style={styles.cardBotao1} onPress={() => adicionarAoCarrinho(produtoSelecionado)} >
                 <Text style={styles.cardText}>Adicionar ao carrinho</Text>
               </TouchableOpacity>
