@@ -9,6 +9,7 @@ export default function LoginScreen() {
   const [senha, setSenha] = useState('');
 
   function handlelogin() {
+    console.log(user)
     if (!user.trim() || !senha.trim()) {
       alert("Preencha todos os campos");
       return;
@@ -45,7 +46,8 @@ export default function LoginScreen() {
         <TextInput
           placeholder="Usuário, email ou telefone:"
           onChangeText={setUser}
-          style={styles.login}autoCapitalize = "none"
+          style={styles.login}
+          autoCapitalize = "none"
         />
 
         <TextInput
