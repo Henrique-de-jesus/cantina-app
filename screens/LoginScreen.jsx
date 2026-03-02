@@ -2,18 +2,15 @@ import { useNavigation } from "@react-navigation/native";
 import { useState, useContext } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ImageBackground } from "react-native";
 import { authService } from "../services/authService";
-import { AuthContext } from '../context/AuthContext'
+import { AuthContext } from '../context/AuthContext';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  const [userLogin, setUserLogin] = useState('')
+  const [userLogin, setUserLogin] = useState('');
   const [senha, setSenha] = useState('');
   const { setUser } = useContext(AuthContext);
 
   function handlelogin() {
-    console.log(user)
-    if (!user.trim() || !senha.trim()) {
-      alert("Preencha todos os campos");
     if (!userLogin.trim()) {
       alert('Este campo precisa ser preenchido');
       return;
@@ -24,14 +21,16 @@ export default function LoginScreen() {
       return;
     }
 
-    const usuarioLogado = authService.login(userLogin, senha);
+    const usuarioLogado = authService.login(userLogin.trim(), senha.trim());
 
     if (!usuarioLogado) {
       alert('Usuário ou senha inválidos!');
       return;
     }
+
+    setUser(usuarioLogado);
+
     if (usuarioLogado.role.trim() === "admin") {
-      setUser(usuarioLogado)
       navigation.navigate("Admin");
     } else {
       navigation.navigate("Home");
@@ -54,11 +53,10 @@ export default function LoginScreen() {
 
         <TextInput
           placeholder="Usuário, email ou telefone:"
-          onChangeText={setUser}
-          style={styles.login}
-          autoCapitalize = "none"
           onChangeText={setUserLogin}
-          style={styles.login} autoCapitalize="none"
+          style={styles.login}
+          autoCapitalize="none"
+          value={userLogin}
         />
 
         <TextInput
@@ -66,6 +64,7 @@ export default function LoginScreen() {
           secureTextEntry
           onChangeText={setSenha}
           style={styles.login}
+          value={senha}
         />
 
         <TouchableOpacity onPress={handlelogin}>
@@ -92,7 +91,6 @@ const styles = StyleSheet.create({
   image: {
     height: 100,
     width: 100,
-
   },
   text: {
     alignItems: 'center',
@@ -119,12 +117,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 15,
     padding: 6,
-    backgroundColor: '#ff5768'
+    backgroundColor: '#ff5768',
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   fundo: {
     flex: 1,
     width: '100%',
     height: '100%',
-    borderWidth: 1
+    borderWidth: 1,
   }
 });

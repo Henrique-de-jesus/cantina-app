@@ -165,7 +165,7 @@ export default function HomeScreen() {
             <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Dogão")}>
               <Image
               style={styles.imagem}
-                source={require("../image/doguinho.png")}
+                source={require("../image/dogao.png")}
               />
               <Text style={styles.comidaText}>Doguinho</Text>
             </TouchableOpacity>
@@ -221,7 +221,7 @@ export default function HomeScreen() {
             <TouchableOpacity style={styles.cardComida} onPress={() => handlePress("Folhado de carne")}>
               <Image
               style={styles.imagem}
-                source={require("../image/foleadoCarne.png")}
+                source={require("../image/folhadoCarne.png")}
               />
               <Text style={styles.comidaText}>Folhado de carne</Text>
             </TouchableOpacity>

@@ -28,7 +28,8 @@ export const products = [{
     descricao: "Coxinha de frango",
     preco: 2.50,
     estoque: 5,
-    categoria: "Salgado"
+    categoria: "Salgado",
+    image: require('../image/coxinha.png')
 },
 {
     id: 3,
@@ -36,7 +37,8 @@ export const products = [{
     descricao: "Pastel de carne",
     preco: 3.50,
     estoque: 5,
-    categoria: "Salgado"
+    categoria: "Salgado",
+    image: require('../image/pastel.png')
 
 },
 {
@@ -45,7 +47,8 @@ export const products = [{
     descricao: "Mini pizza de carne",
     preco: 6.00,
     estoque: 5,
-    categoria: "Salgado"
+    categoria: "Salgado",
+    image: require('../image/miniPizza.png')
 
 },
 {
@@ -54,43 +57,48 @@ export const products = [{
     descricao: "Assado folhado de carne",
     preco: 5.00,
     estoque: 5,
-    categoria: "Salgado"
+    categoria: "Salgado",
+    image: require('../image/folhadoCarne.png')
 
 },
-{
+/*{
     id: 6,
     nome: "Folhado de queijo",
     descricao: "Assado folhado de queijo",
     preco: 5.00,
     estoque: 5,
-    categoria: "Salgado"
+    categoria: "Salgado",
+    image: require('../image/coxinha.png')
 
-},
+},*/
 {
     id: 7,
     nome: "Dogão",
     descricao: "Cachorro-quente",
     preco: 7.00,
     estoque: 5,
-    categoria: "Salgado"
+    categoria: "Salgado",
+    image: require('../image/dogao.png')
 
 },
-{
+/*{
     id: 8,
     nome: "Assado de Calabresa",
     descricao: "salgado de calabresa",
     preco: 5.00,
     estoque: 5,
-    categoria: "Salgado"
+    categoria: "Salgado",
+    image: require('../image/coxinha.png')
 
-},
+},*/
 {
     id: 9,
     nome: "Soda",
     descricao: "Refrigerante de limão",
     preco: 3.49,
     estoque: 4,
-    categoria: "Refrigerante"
+    categoria: "Refrigerante",
+    image: require('../image/sodaLimao.png')
 
 },
 {
@@ -99,7 +107,8 @@ export const products = [{
     descricao: "refrigerante de cola",
     preco: 2.59,
     estoque: 4,
-    categoria: "Refrigerante"
+    categoria: "Refrigerante",
+    image: require('../image/coca-cola.png')
 
 },
 {
@@ -108,7 +117,8 @@ export const products = [{
     descricao: "Refrigerante de laranja",
     preco: 3.49,
     estoque: 4,
-    categoria: "Refrigerante"
+    categoria: "Refrigerante",
+    image: require('../image/fantaL.png')
 
 },
 {
@@ -117,6 +127,7 @@ export const products = [{
     descricao: "Refrigerante de guaraná",
     preco: 2.59,
     estoque: 4,
-    categoria: "Refrigerante"
+    categoria: "Refrigerante",
+    image: require('../image/guarana.png')
 
 }];
