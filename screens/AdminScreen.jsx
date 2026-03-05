@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, Alert } from "react-native";
 import { useState, useEffect, useContext } from "react";
 import { getProducts } from "../services/productService";
-import { increaseStock, decreaseStock } from "../services/adminService";
+import { increaseStock, decreaseStock } from "../services/productService";
 import { AuthContext } from "../context/AuthContext";
 
 export default function AdminScreen() {
