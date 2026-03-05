@@ -20,7 +20,7 @@ export const autenticarUser = (email, senha, navigation) => {
     }
 
     if (user.role === "admin") {
-        navigation.navigate("Home");
+        navigation.navigate("Admin");
     } else {
         navigation.navigate("Home");
     }

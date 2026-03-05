@@ -38,7 +38,8 @@ export default function AdminScreen() {
       Alert.alert("Erro", error.message || "Não foi possível diminuir o estoque.");
     }
   }
-
+console.log(user)
+console.log(user.role)
   if (!user || (user.role || "").trim().toLowerCase() !== "admin") {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
