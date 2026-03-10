@@ -137,5 +137,5 @@ import {
     buttonText: {
       color: "#fff",
       fontWeight: "bold"
-    }
+    } 
   });
